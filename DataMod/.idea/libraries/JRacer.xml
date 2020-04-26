@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="JRacer">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../jracer-2-0/JRacer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../jracer-2-0/JRacer.jar!/" />
+    </SOURCES>
+  </library>
+</component>
