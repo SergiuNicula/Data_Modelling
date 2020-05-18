@@ -1,0 +1,17 @@
+(define-fuzzy-concept LittleRegions left-shoulder(0,20,7,13))
+(define-fuzzy-concept LotOfRegions right-shoulder(0,20,9,15))
+
+(define-concept SmallImage (and Image (some regions LittleRegions)))
+(define-concept BigImage (and Image (some regions LotOfRegions)))
+
+(functional regions)
+(define-modifier modifier linear-modifier(2))
+
+(define-concept VerySmallImage (modifier SmallImage))
+(define-concept MediumImage (modifier (modifier BigImage)))
+
+(min-subs? VerySmallImage SmallImage)
+(max-subs? VerySmallImage BigImage)
+(max-subs? MediumImage SmallImage)
+(min-subs? MediumImage BigImage)
+

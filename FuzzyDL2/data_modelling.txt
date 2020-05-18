@@ -1,0 +1,34 @@
+(define-fuzzy-concept Independent crisp(0,100,0,60))
+(define-fuzzy-concept Control left-shoulder(0,100,30,70))
+(define-fuzzy-concept Dependent left-shoulder(0,100,40,100))
+
+(define-concept DependentVariable(and Variable (some percent Dependent)))
+(define-concept IndependentVariable(and Variable (some percent Independent)))
+#(define-concept ControlVariable(and Variable (some percent Control)))
+
+(functional percent)
+
+(define-modifier between linear-modifier(5))
+#(define-concept BetweenDependentControl (between Dependent))
+#(define-concept BetweenControlIndependent (between Control))
+
+(min-l-subs? DependentVariable IndependentVariable)
+(min-kd-subs? DependentVariable IndependentVariable)
+(min-subs? DependentVariable IndependentVariable)
+(min-subs? ControlVariable IndependentVariable)
+(min-subs? ControlVariable DependentVariable)
+(min-subs? ControlVariable BetweenControlIndependent)
+(min-subs? IndependentVariable DependentVariable)
+(min-subs? IndependentVariable ControlVariable)
+(min-subs? DependentVariable ControlVariable)
+(min-subs? BetweenControlIndependent ControlVariable)
+(max-subs? DependentVariable IndependentVariable)
+(max-subs? ControlVariable IndependentVariable)
+(max-subs? ControlVariable DependentVariable)
+(max-subs? ControlVariable BetweenControlIndependent)
+
+
+#(concept-satisfiable? (and DependentVariable IndependentVariable))
+
+#(max-sat? (and DependentVariable IndependentVariable))
+(show-concrete-fillers percent)
